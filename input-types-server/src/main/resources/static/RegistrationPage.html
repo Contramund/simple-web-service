@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="stylesheet" href="RegistrationPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Registration</title>
+</head>
+<body>
+
+    <div class="top-panel">
+        <form action="/">
+            <input type="submit" value="Main page" />
+        </form>
+    </div>
+
+    <form class="registration-form" id="registration-form" action="registration" method="post" enctype="multipart/form-data">
+        <h1> Registration </h1>
+
+        <h3> Basic info: </h3>
+
+        <div class="basic-info">
+            <div class="basics-grid">
+                <input type="hidden" value="hidden-data" name="hidden-data">
+
+                <div class="basic-info-item">
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="fname" required placeholder="Zohar" autocomplete="given-name">
+                </div>
+
+                <div class="basic-info-item">
+                    <label for="sname">Second name:</label>
+                    <input type="text" id="sname" name="sname" required placeholder="Alexeyevich" autocomplete="additional-name">
+                </div>
+
+                <div class="basic-info-item">
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="lname" name="lname" required placeholder="Pupkin" autocomplete="family-name">
+                </div>
+
+                <div class="basic-info-item">
+                    <label for="lname"> Sex: </label>
+                    <select name="sex" id="sex">
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                        <option value="dumbass">Dumbass</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="basic-info-item">
+                <label for="birthday"> Was born in: </label>
+                <input type="date" id="birthday" name="birthday" autocomplete="bday">
+            </div>
+        </div>
+
+        <h3> Contacts: </h3>
+        <div class="contacts-grid">
+            <div class="grid-item">
+                <label for="email"> Contact email: </label>
+                <input type="email" id="email" name="email" required placeholder="example@example.com" autocomplete="email">
+            </div>
+
+            <div class="grid-item">
+                <label for="telephone"> Contact phone: </label>
+                <input type="tel" id="telephone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="telephone" placeholder="XXX-XXX-XXXX">
+            </div>
+        </div>
+
+        <h3> Academic info: </h3>
+
+        <div class="academic-info">
+            <div class="academic-grid">
+                <div class="grid-item">
+                    <label for="mkn-master"> Studied in SPbU MKN: </label>
+                    <input type="checkbox" id="mkn-master" name="mkn-master" value="1">
+                    <label for="mkn-master"></label>
+                </div>
+
+                <div class="grid-item">
+                    <label for="paper-count"> Number of papers: </label>
+                    <input type="number" id="paper-count" name="paper-count" min="0" max="1000" value="0">
+                </div>
+
+                <div class="grid-item">
+                    <label for="math-net-link"> MathNet link: </label>
+                    <input type="url" id="math-net-link" name="math-net-link" required placeholder="https://???">
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <fieldset id="degree">
+                    <legend> Your degree: </legend>
+                    <input type="radio" id="degree-none" value="none" name="degree" checked="checked">
+                    <label for="degree-none"> None </label>
+                    <input type="radio" id="degree-bachelor" value="bachelor" name="degree">
+                    <label for="degree-bachelor"> Bachelor </label>
+                    <input type="radio" id="degree-master" value="master" name="degree">
+                    <label for="degree-master"> Master </label>
+                    <input type="radio" id="degree-phd" value="phd" name="degree">
+                    <label for="degree-phd"> PHD </label>
+                </fieldset>
+            </div>
+
+        </div>
+
+        <h3> Account info: </h3>
+        <div class="account-info">
+            <div class="account-grid">
+                <div class="grid-item">
+                    <label for="avatar-color"> Avatar-color: </label>
+                    <input type="color" id="avatar-color" name="avatar-color">
+                </div>
+
+                <div class="grid-item">
+                    <label for="avatar"> Choose avatar picture: </label>
+                    <input type="file" id="avatar" name="avatar" alt="avatar">
+                </div>
+
+            </div>
+            <div>
+                <label for="description"> Describe yourself: </label>
+                <textarea name="description" id="description" form="registration-form" rows="4" placeholder="Tell us about you... "></textarea>
+            </div>
+
+            <div class="password-div">
+                <label for="password"> Password: </label>
+                <input type="password" id="password" name="password" required placeholder="Give damn hackers a challenge!">
+            </div>
+        </div>
+
+        <div class="buttons-grid">
+            <div class="grid-item">
+                <input type="submit" value="Submit">
+            </div>
+            <div class="grid-item">
+                <input type="reset" value="Reset">
+            </div>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

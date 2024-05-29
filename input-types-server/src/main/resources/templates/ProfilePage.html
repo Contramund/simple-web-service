@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../ProfilePage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title data-th-text ="${profile.fname + ' ' + profile.lname}" ></title>
+</head>
+<body>
+    <h1> Profile </h1>
+
+    <div class="profile-window">
+        <img class="avatar-image" src="./avatar" alt="avatar" data-th-style="${'background-color:' + profile.avatarColor + ';'}">
+
+        <div class="personal-info">
+            <div class="full-name" data-th-text="${profile.fname + ' ' + profile.sname + ' ' + profile.lname}"></div>
+
+            <div class="in-line-label"> Born in: </div>
+            <div class="birthday" id="birthday" data-th-text="${(profile.birthday.isPresent() ? profile.birthday.get() : '???')}"></div>
+
+            <div class="in-line-label"> Sex: </div>
+            <div class="sex" id="sex" data-th-text="${profile.sex}"></div>
+
+            <div class="new-line-label"> About: </div>
+            <div class="description" data-th-text="${profile.description}"></div>
+        </div>
+
+        <div class="credentials">
+            <div class="credential">
+                <div class="in-line-label"> Number of papers: </div>
+                <div class="paper-count" id="paper-count" data-th-text="${profile.paperCount}"></div>
+            </div>
+            <div class="credential">
+                <div class="in-line-label"> Degree: </div>
+                <div class="degree" id="degree" data-th-text="${profile.degree}"></div>
+            </div>
+            <div class="credential">
+                <div class="in-line-label"> MathNet: </div>
+                <div class="math-net" id="math-net" data-th-text="${profile.mathNetLink}"></div>
+            </div>
+        </div>
+
+        <div class="contacts">
+            <div class="contact">
+                <div class="in-line-label"> E-Mail: </div>
+                <div class="email" id="email" data-th-text="${profile.email}"></div>
+            </div>
+            <div class="contact">
+                <div class="in-line-label"> Phone number: </div>
+                <div class="phone" id="phone" data-th-text="${profile.telephone.isPresent() ? profile.telephone.get() : '???'}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-panel">
+        <form action="/">
+            <input type="submit" value="Main page" />
+        </form>
+        <form action="./edit">
+            <input type="submit" value="Edit profile" />
+        </form>
+    </div>
+</body>
+</html>

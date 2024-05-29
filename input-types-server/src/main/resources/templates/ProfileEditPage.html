@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/ProfileEditPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="/ProfileEditPage.js"></script>
+    <title>Registration</title>
+</head>
+<body>
+
+<div class="top-panel">
+    <button id="to-main-page" type="button">Main page</button>
+    <button id="to-profile-page" type="button">Back to profile</button>
+</div>
+
+<form class="registration-form" id="registration-form" data-th-action="${'/edit/' + profile.personId + '/update'}" method="post" enctype="multipart/form-data">
+    <h1> Edit profile </h1>
+
+    <h3> Basic info: </h3>
+
+    <div class="basic-info">
+        <div class="basics-grid">
+            <input type="hidden" value="hidden-data" name="hidden-data">
+
+            <div class="basic-info-item">
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname" required placeholder="Zohar" data-th-value="${profile.fname}">
+                <p id="fname-status">Synced.</p>
+            </div>
+
+            <div class="basic-info-item">
+                <label for="sname">Second name:</label>
+                <input type="text" id="sname" name="sname" required placeholder="Alexeyevich" data-th-value="${profile.sname}">
+                <p id="sname-status">Synced.</p>
+            </div>
+
+            <div class="basic-info-item">
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname" required placeholder="Pupkin" data-th-value="${profile.lname}">
+                <p id="lname-status">Synced.</p>
+            </div>
+
+            <div class="basic-info-item">
+                <label for="sex"> Sex: </label>
+                <select name="sex" id="sex" data-th-value="${profile.sex}">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                    <option value="dumbass">Dumbass</option>
+                </select>
+                <p id="sex-status">Synced.</p>
+            </div>
+        </div>
+
+        <div class="basic-info-item">
+            <label for="birthday"> Was born in: </label>
+            <input type="date" id="birthday" name="birthday" data-th-value="${profile.birthday.isPresent() ? profile.birthday.get() : ''}">
+            <p id="birthday-status">Synced.</p>
+        </div>
+    </div>
+
+    <h3> Contacts: </h3>
+    <div class="contacts-grid">
+        <div class="grid-item">
+            <label for="email"> Contact email: </label>
+            <input type="email" id="email" name="email" required placeholder="example@example.com" data-th-value="${profile.email}">
+            <p id="email-status">Synced.</p>
+        </div>
+
+        <div class="grid-item">
+            <label for="telephone"> Contact phone: </label>
+            <input type="tel" id="telephone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="telephone" placeholder="XXX-XXX-XXXX" data-th-value="${profile.telephone.isPresent ? profile.telephone.get() : ''}">
+            <p id="telephone-status">Synced.</p>
+        </div>
+    </div>
+
+    <h3> Academic info: </h3>
+
+    <div class="academic-info">
+        <div class="academic-grid">
+            <div class="grid-item">
+                <label for="mkn-master"> Studied in SPbU MKN: </label>
+                <input type="checkbox" id="mkn-master" name="mkn-master" data-th-checked="${profile.isMknMaster}">
+                <label for="mkn-master"></label>
+                <p id="mkn-master-status">Synced.</p>
+            </div>
+
+            <div class="grid-item">
+                <label for="paper-count"> Number of papers: </label>
+                <input type="number" id="paper-count" name="paper-count" min="0" max="1000" data-th-value="${profile.paperCount}">
+                <p id="paper-count-status">Synced.</p>
+            </div>
+
+            <div class="grid-item">
+                <label for="math-net-link"> MathNet link: </label>
+                <input type="url" id="math-net-link" name="math-net-link" required placeholder="https://???" data-th-value="${profile.mathNetLink}">
+                <p id="math-net-link-status">Synced.</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <fieldset id="degree">
+                <legend> Your degree: </legend>
+                <input type="radio" id="degree-none" value="none" name="degree" data-th-checked="${profile.degree == 'degree-none'}">
+                <label for="degree-none"> None </label>
+                <input type="radio" id="degree-bachelor" value="bachelor" name="degree"  data-th-checked="${profile.degree == 'degree-bachelor'}">
+                <label for="degree-bachelor"> Bachelor </label>
+                <input type="radio" id="degree-master" value="master" name="degree" data-th-checked="${profile.degree == 'degree-master'}">
+                <label for="degree-master"> Master </label>
+                <input type="radio" id="degree-phd" value="phd" name="degree" data-th-checked="${profile.degree == 'degree-phd'}">
+                <label for="degree-phd"> PHD </label>
+                <p id="degree-status">Synced.</p>
+            </fieldset>
+        </div>
+
+    </div>
+
+    <h3> Account info: </h3>
+    <div class="account-info">
+        <div class="account-grid">
+            <div class="grid-item">
+                <label for="avatar-color"> Avatar-color: </label>
+                <input type="color" id="avatar-color" name="avatar-color" data-th-value="${profile.avatarColor}">
+                <p id="avatar-color-status">Synced.</p>
+            </div>
+
+            <div class="grid-item">
+                <label for="avatar"> Choose avatar picture: </label>
+                <input type="file" id="avatar" name="avatar" alt="avatar">
+                <p id="avatar-status">Synced.</p>
+            </div>
+
+        </div>
+        <div>
+            <label for="description"> Describe yourself: </label>
+            <textarea name="description" id="description" form="registration-form" rows="4" placeholder="Tell us about you... " data-th-value="${profile.description}"></textarea>
+            <p id="description-status">Synced.</p>
+        </div>
+    </div>
+
+    <div class="buttons-grid">
+        <div class="grid-item">
+            <button id="abort-edition" type="button">Abort changes</button>
+        </div>
+        <div class="grid-item">
+            <button id="submit-edition" type="button">Submit changes</button>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>
